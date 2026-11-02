@@ -29,8 +29,9 @@
 @font-face{font-family:"Fragment Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/muestras/luigi-web-2026/fonts/fragmentmono-latin.woff2) format("woff2")}
 :root{--ink:#14120e;--ink2:#1e1b16;--ink3:#2a261f;--paper:#f6f1e7;--paper2:#ece3d1;--green:#1b623a;--green2:#134a2b;--gold:#d9b45b;--gold2:#ecd391;--cream:#f6efe0;--mute:#6a6257;--mute-d:#b8ae9c;--line:rgba(20,18,14,.12);--line-d:rgba(246,239,224,.14);--serif:Gloock,"Iowan Old Style",Georgia,serif;--mono:"Fragment Mono",ui-monospace,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;--r:14px;--w:1180px;color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 img,video{display:block;max-width:100%;height:auto}
 a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em;margin:0}
@@ -107,7 +108,7 @@ button{font:inherit;color:inherit}
 .gband{background:var(--green);color:var(--cream)}
 .h2{font-size:clamp(36px,8vw,64px);margin:0 0 18px;text-wrap:balance}
 .lede{font-size:18.5px;max-width:58ch;color:#3c362d}
-.dark .lede,.gband .lede{color:#e3d9c4}
+.dark .lede,.dark2 .lede,.gband .lede{color:#e3d9c4}
 .grid{display:grid;gap:16px}
 /* voices */
 .voices{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 14px;margin:30px -20px 0;scrollbar-width:none}
@@ -143,6 +144,7 @@ button{font:inherit;color:inherit}
 .kv li{display:flex;gap:14px;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px}
 .kv li>span:first-child{font:400 11.5px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);padding-top:3px;flex:none}
 .kv li>span:last-child{text-align:right}
+.kv .nw{white-space:nowrap}
 .kv a{text-underline-offset:3px}
 .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
 .btns .btn{flex:1 1 140px}
@@ -152,7 +154,7 @@ button{font:inherit;color:inherit}
 .dish img{width:100%;aspect-ratio:1;object-fit:cover}
 .dish .t{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .dish h3{font-size:21px;line-height:1.05}
-.dish p{font-size:13.5px;color:#cfc5b1;margin:0;flex:1}
+.dish p{font-size:13.5px;color:#cfc5b1;margin:0;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .price{font:400 14px var(--mono);color:var(--gold);letter-spacing:.02em;white-space:nowrap}
 /* menu del dia */
 .mdd{display:grid;gap:26px}
@@ -182,7 +184,7 @@ button{font:inherit;color:inherit}
 .strip h3{font-size:26px;margin-bottom:6px}
 .strip p{margin:0;color:#d8cebb;font-size:15.5px}
 /* footer */
-.foot{background:#0d0c0a;color:#d6ccb8;padding:60px 0 34px;font-size:15px}
+.foot{background:#0d0c0a;color:#d6ccb8;padding:60px 0 calc(112px + env(safe-area-inset-bottom));font-size:15px}
 .foot .cols{display:grid;gap:30px}
 .foot h4{font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
 .foot a{color:#efe6d3;text-decoration:none}
@@ -251,8 +253,9 @@ dialog::backdrop{background:rgba(10,9,7,.6)}
 .pick button{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:10px;cursor:pointer}
 .pick button:hover{border-color:var(--green)}
 .pick img{width:92px;height:70px;object-fit:cover;border-radius:10px}
-.pick strong{font-family:var(--serif);font-weight:400;font-size:24px;display:block;line-height:1.1}
-.pick span{font:400 11.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.pick strong{font-family:var(--serif);font-weight:400;font-size:24px;display:block;line-height:1.1;margin-bottom:4px}
+.pick small{display:block;font:400 11.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.pick button[aria-pressed=true]{border-color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
 .pick .hint{font-size:14.5px;color:#4a443a;margin:4px 0 0;grid-column:1/-1}
 .cm{width:100%;height:100%;min-height:640px;border:0;display:block;background:#fff}
 .groups{padding:0 20px 24px;font-size:14.5px;color:#4a443a}
@@ -345,7 +348,7 @@ textarea{min-height:76px;resize:vertical}
 .sheet{left:50%;top:50%;bottom:auto;height:min(860px,92vh);width:min(760px,94vw);transform:translate(-50%,-50%);border-radius:20px;animation:none}
 }
 @media (min-width:960px){
-body{padding-bottom:0}
+.foot{padding-bottom:34px}
 .dock{display:none}
 .nav{display:flex}
 .menu-b,.drawer{display:none!important}
@@ -417,12 +420,12 @@ body{padding-bottom:0}
 <div class="locs"><article class="loc">
 <div class="ph"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="900" height="600" alt="Luigi on Roger de Llúria at night, golden sign lit up" loading="lazy" decoding="async"><span class="tag">Eixample</span></div>
 <div class="bd"><h3>Roger de Llúria</h3><p class="sub">Neapolitan pizzeria with the wood-fired oven right in the middle of the room.</p>
-<ul class="kv"><li><span>Address</span><span>Roger de Llúria, 50<br>08009 Barcelona</span></li><li><span>Hours</span><span>Every day, 12:00–00:00</span></li><li><span>Phone</span><span><a href="tel:+34934673224">+34 93 467 32 24</a></span></li><li><span>Metro</span><span>Girona (L4), about 300 m away<br>Passeig de Gràcia (L2 · L3 · L4), about 400 m away</span></li></ul>
+<ul class="kv"><li><span>Address</span><span>Roger de Llúria, 50<br>08009 Barcelona</span></li><li><span>Hours</span><span>Every day, 12:00–00:00</span></li><li><span>Phone</span><span><a href="tel:+34934673224">+34 93 467 32 24</a></span></li><li><span>Metro</span><span><span class="nw">Girona (L4) · 300 m</span><br><span class="nw">Passeig de Gràcia (L2 · L3 · L4) · 400 m</span></span></li></ul>
 <div class="btns"><a class="btn btn-gold" href="/muestras/luigi-web-2026/en/book/?local=lluria" data-rsv="lluria">Book here</a><a class="btn btn-ink" href="/muestras/luigi-web-2026/en/roger-de-lluria/">See the restaurant</a></div>
 </div></article><article class="loc">
 <div class="ph"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="900" height="600" alt="Luigi on Via Laietana with Barcelona Cathedral at the end of the street" loading="lazy" decoding="async"><span class="tag">Gothic Quarter</span></div>
 <div class="bd"><h3>Via Laietana</h3><p class="sub">Two wood-fired ovens shipped from Naples, steps from the Cathedral.</p>
-<ul class="kv"><li><span>Address</span><span>Via Laietana, 41<br>08003 Barcelona</span></li><li><span>Hours</span><span>Every day, 12:00–00:00</span></li><li><span>Phone</span><span><a href="tel:+34932703487">+34 93 270 34 87</a></span></li><li><span>Metro</span><span>Urquinaona (L1 · L4), about 300 m away<br>Jaume I (L4), about 400 m away</span></li></ul>
+<ul class="kv"><li><span>Address</span><span>Via Laietana, 41<br>08003 Barcelona</span></li><li><span>Hours</span><span>Every day, 12:00–00:00</span></li><li><span>Phone</span><span><a href="tel:+34932703487">+34 93 270 34 87</a></span></li><li><span>Metro</span><span><span class="nw">Urquinaona (L1 · L4) · 300 m</span><br><span class="nw">Jaume I (L4) · 400 m</span></span></li></ul>
 <div class="btns"><a class="btn btn-gold" href="/muestras/luigi-web-2026/en/book/?local=laietana" data-rsv="laietana">Book here</a><a class="btn btn-ink" href="/muestras/luigi-web-2026/en/via-laietana/">See the restaurant</a></div>
 </div></article></div>
 </div></section>
@@ -451,7 +454,7 @@ body{padding-bottom:0}
 </div></section>
 
 <section class="sec dark2" aria-labelledby="llevar"><div class="wrap tk">
-<div><img src="/muestras/luigi-web-2026/img/platos/margherita-1-m.webp" width="560" height="560" alt="A freshly made margherita" loading="lazy" decoding="async"></div>
+<div><img src="/muestras/luigi-web-2026/img/pizzaiolo.webp" width="720" height="720" alt="A Luigi pizzaiolo working the dough" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow on-dark">Takeaway</p><h2 class="h2" id="llevar">Straight from the oven, at the time you choose</h2><p class="lede">Order here, no delivery apps in between: choose the restaurant and a pick-up time, pay by card and it’s ready when you arrive.</p>
 <ol class="steps3"><li>Choose restaurant and pick-up time</li><li>Add your dishes</li><li>Pay by card and collect</li></ol>
 <div class="cta"><a class="btn btn-gold" href="/muestras/luigi-web-2026/en/takeaway/">Start an order</a></div>
@@ -470,13 +473,13 @@ body{padding-bottom:0}
 </main>
 <footer class="foot"><div class="wrap">
 <p class="lema">We’re not Luigi, but this is Luigi. Italian and Mediterranean food from noon to midnight.</p>
-<div class="cols"><div><h4>Roger de Llúria</h4><ul><li><a href="/muestras/luigi-web-2026/en/roger-de-lluria/">Roger de Llúria, 50, 08009 Barcelona</a></li><li><a href="tel:+34934673224">+34 93 467 32 24</a></li><li>Metro Girona (L4)</li></ul></div><div><h4>Via Laietana</h4><ul><li><a href="/muestras/luigi-web-2026/en/via-laietana/">Via Laietana, 41, 08003 Barcelona</a></li><li><a href="tel:+34932703487">+34 93 270 34 87</a></li><li>Metro Urquinaona (L1 · L4)</li></ul></div><div><h4>Opening hours</h4><ul><li>Every day, 12:00–00:00</li><li>Kitchen open all day</li><li>Set lunch: Mon–Fri, 12:00–16:00</li><li>DJ: Friday and Saturday</li></ul></div><div><h4>Follow us</h4><ul><li><a href="https://www.instagram.com/luigiristorantebcn/" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@luigiristorantebcn" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/@show.deluigi" rel="noopener">Youtube</a></li><li><a href="https://www.facebook.com/luigiristorante" rel="noopener">Facebook</a></li></ul><h4 style="margin-top:22px">More</h4><ul><li><a href="/muestras/luigi-web-2026/en/menu/">Menu</a></li><li><a href="https://luigiristorante.es/compra-on-line/categoria-producto/tarjetas-regalo/" rel="noopener">Gift card</a></li><li><a href="https://luigiristorante.es/menus-grupo/" rel="noopener">Group menus</a></li><li><a href="https://glovoapp.com/es/bcn/store/luigi-ristorante/" rel="noopener">Delivery (Glovo)</a></li></ul></div></div>
+<div class="cols"><div><h4>Roger de Llúria</h4><ul><li><a href="/muestras/luigi-web-2026/en/roger-de-lluria/">Roger de Llúria, 50, 08009 Barcelona</a></li><li><a href="tel:+34934673224">+34 93 467 32 24</a></li><li>Metro Girona (L4)</li></ul></div><div><h4>Via Laietana</h4><ul><li><a href="/muestras/luigi-web-2026/en/via-laietana/">Via Laietana, 41, 08003 Barcelona</a></li><li><a href="tel:+34932703487">+34 93 270 34 87</a></li><li>Metro Urquinaona (L1 · L4)</li></ul></div><div><h4>Opening hours</h4><ul><li>Every day, 12:00–00:00</li><li>Kitchen open all day</li><li>Set lunch: Mon–Fri, 12:00–16:00</li><li>DJ: Friday and Saturday</li></ul></div><div><h4>Follow us</h4><ul><li><a href="https://www.instagram.com/luigiristorantebcn/" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@luigiristorantebcn" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/@show.deluigi" rel="noopener">YouTube</a></li><li><a href="https://www.facebook.com/luigiristorante" rel="noopener">Facebook</a></li></ul><h4 style="margin-top:22px">More</h4><ul><li><a href="/muestras/luigi-web-2026/en/menu/">Menu</a></li><li><a href="https://luigiristorante.es/compra-on-line/categoria-producto/tarjetas-regalo/" rel="noopener">Gift card</a></li><li><a href="https://luigiristorante.es/menus-grupo/" rel="noopener">Group menus</a></li><li><a href="https://glovoapp.com/es/bcn/store/luigi-ristorante/" rel="noopener">Delivery (Glovo)</a></li></ul></div></div>
 <div class="legal"><span>© 2026 Luigi Ristorante</span><a href="https://luigiristorante.es/aviso-legal/" rel="noopener">Legal notice</a><a href="https://luigiristorante.es/politica-de-privacidad/" rel="noopener">Privacy</a><a href="https://luigiristorante.es/politica-de-cookies/" rel="noopener">Cookies</a><span>Preview version · Veldra Consulting</span></div>
 </div></footer>
 <div class="dock"><a class="btn btn-gold" href="/muestras/luigi-web-2026/en/book/" data-rsv>Book a table</a><a class="btn btn-line" href="/muestras/luigi-web-2026/en/takeaway/">Takeaway</a></div>
 <dialog id="rsv" aria-labelledby="rsv-t"><div class="sheet">
 <div class="sheet-h"><div style="flex:1"><button type="button" class="back" hidden>← Change restaurant</button><h2 id="rsv-t" data-rsv-title>Choose a restaurant</h2></div><button type="button" class="x" aria-label="Close">×</button></div>
-<div class="sheet-b"><div class="pick"><button type="button" data-k="lluria"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><span>Eixample · Metro Girona (L4)</span></span></button><button type="button" data-k="laietana"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><span>Gothic Quarter · Metro Urquinaona (L1 · L4)</span></span></button><p class="hint groups" style="padding:0">10 or more of you? Call us and we will sort it out: <a href="tel:+34934673224">Llúria +34 93 467 32 24</a> · <a href="tel:+34932703487">Laietana +34 93 270 34 87</a>.</p></div><div data-rsv-box hidden></div></div>
+<div class="sheet-b"><div class="pick"><button type="button" data-k="lluria"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><small>Eixample · Metro Girona (L4)</small></span></button><button type="button" data-k="laietana"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><small>Gothic Quarter · Metro Urquinaona (L1 · L4)</small></span></button><p class="hint groups" style="padding:0">10 or more of you? Call us and we will sort it out: <a href="tel:+34934673224">Llúria +34 93 467 32 24</a> · <a href="tel:+34932703487">Laietana +34 93 270 34 87</a>.</p></div><div data-rsv-box hidden></div></div>
 </div></dialog>
 </body>
 </html>

@@ -29,8 +29,9 @@
 @font-face{font-family:"Fragment Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/muestras/luigi-web-2026/fonts/fragmentmono-latin.woff2) format("woff2")}
 :root{--ink:#14120e;--ink2:#1e1b16;--ink3:#2a261f;--paper:#f6f1e7;--paper2:#ece3d1;--green:#1b623a;--green2:#134a2b;--gold:#d9b45b;--gold2:#ecd391;--cream:#f6efe0;--mute:#6a6257;--mute-d:#b8ae9c;--line:rgba(20,18,14,.12);--line-d:rgba(246,239,224,.14);--serif:Gloock,"Iowan Old Style",Georgia,serif;--mono:"Fragment Mono",ui-monospace,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;--r:14px;--w:1180px;color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 img,video{display:block;max-width:100%;height:auto}
 a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em;margin:0}
@@ -107,7 +108,7 @@ button{font:inherit;color:inherit}
 .gband{background:var(--green);color:var(--cream)}
 .h2{font-size:clamp(36px,8vw,64px);margin:0 0 18px;text-wrap:balance}
 .lede{font-size:18.5px;max-width:58ch;color:#3c362d}
-.dark .lede,.gband .lede{color:#e3d9c4}
+.dark .lede,.dark2 .lede,.gband .lede{color:#e3d9c4}
 .grid{display:grid;gap:16px}
 /* voices */
 .voices{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 14px;margin:30px -20px 0;scrollbar-width:none}
@@ -143,6 +144,7 @@ button{font:inherit;color:inherit}
 .kv li{display:flex;gap:14px;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px}
 .kv li>span:first-child{font:400 11.5px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);padding-top:3px;flex:none}
 .kv li>span:last-child{text-align:right}
+.kv .nw{white-space:nowrap}
 .kv a{text-underline-offset:3px}
 .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
 .btns .btn{flex:1 1 140px}
@@ -152,7 +154,7 @@ button{font:inherit;color:inherit}
 .dish img{width:100%;aspect-ratio:1;object-fit:cover}
 .dish .t{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .dish h3{font-size:21px;line-height:1.05}
-.dish p{font-size:13.5px;color:#cfc5b1;margin:0;flex:1}
+.dish p{font-size:13.5px;color:#cfc5b1;margin:0;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .price{font:400 14px var(--mono);color:var(--gold);letter-spacing:.02em;white-space:nowrap}
 /* menu del dia */
 .mdd{display:grid;gap:26px}
@@ -182,7 +184,7 @@ button{font:inherit;color:inherit}
 .strip h3{font-size:26px;margin-bottom:6px}
 .strip p{margin:0;color:#d8cebb;font-size:15.5px}
 /* footer */
-.foot{background:#0d0c0a;color:#d6ccb8;padding:60px 0 34px;font-size:15px}
+.foot{background:#0d0c0a;color:#d6ccb8;padding:60px 0 calc(112px + env(safe-area-inset-bottom));font-size:15px}
 .foot .cols{display:grid;gap:30px}
 .foot h4{font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
 .foot a{color:#efe6d3;text-decoration:none}
@@ -251,8 +253,9 @@ dialog::backdrop{background:rgba(10,9,7,.6)}
 .pick button{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:10px;cursor:pointer}
 .pick button:hover{border-color:var(--green)}
 .pick img{width:92px;height:70px;object-fit:cover;border-radius:10px}
-.pick strong{font-family:var(--serif);font-weight:400;font-size:24px;display:block;line-height:1.1}
-.pick span{font:400 11.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.pick strong{font-family:var(--serif);font-weight:400;font-size:24px;display:block;line-height:1.1;margin-bottom:4px}
+.pick small{display:block;font:400 11.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.pick button[aria-pressed=true]{border-color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
 .pick .hint{font-size:14.5px;color:#4a443a;margin:4px 0 0;grid-column:1/-1}
 .cm{width:100%;height:100%;min-height:640px;border:0;display:block;background:#fff}
 .groups{padding:0 20px 24px;font-size:14.5px;color:#4a443a}
@@ -345,7 +348,7 @@ textarea{min-height:76px;resize:vertical}
 .sheet{left:50%;top:50%;bottom:auto;height:min(860px,92vh);width:min(760px,94vw);transform:translate(-50%,-50%);border-radius:20px;animation:none}
 }
 @media (min-width:960px){
-body{padding-bottom:0}
+.foot{padding-bottom:34px}
 .dock{display:none}
 .nav{display:flex}
 .menu-b,.drawer{display:none!important}
@@ -388,19 +391,19 @@ body{padding-bottom:0}
 <button class="menu-b" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menú"><span></span></button>
 </div><nav id="drawer" class="drawer" aria-label="Menú"><a href="/muestras/luigi-web-2026/carta/">Carta<small>Con precios y alérgenos</small></a><a href="/muestras/luigi-web-2026/roger-de-lluria/">Roger de Llúria<small>Eixample</small></a><a href="/muestras/luigi-web-2026/via-laietana/">Via Laietana<small>Gòtic</small></a><a href="/muestras/luigi-web-2026/menu-del-dia/">Menú del día<small>17 €</small></a><a href="/muestras/luigi-web-2026/para-llevar/">Para llevar<small>Pide y recoge</small></a></nav></header>
 <main id="main"><div class="wrap ph1"><nav class="crumbs" aria-label="Breadcrumb"><a href="/muestras/luigi-web-2026/">Inicio</a> / <span aria-current="page">Reservar</span></nav><h1>Reservar mesa</h1><p class="lede">Elige restaurante, día y hora. La reserva entra directamente en el sistema del restaurante.</p></div>
-<div class="wrap"><div class="pick" style="padding:0"><button type="button" data-pick-inline data-k="lluria" aria-pressed="false"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><span>Eixample · Roger de Llúria, 50</span></span></button><button type="button" data-pick-inline data-k="laietana" aria-pressed="false"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><span>Barri Gòtic · Via Laietana, 41</span></span></button></div>
+<div class="wrap"><div class="pick" style="padding:0"><button type="button" data-pick-inline data-k="lluria" aria-pressed="false"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><small>Eixample · Roger de Llúria, 50</small></span></button><button type="button" data-pick-inline data-k="laietana" aria-pressed="false"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><small>Barri Gòtic · Via Laietana, 41</small></span></button></div>
 <div class="notice" style="margin-top:16px;background:#eef5ef;border-color:#9cc3a8;color:#173d26"><b style="background:var(--green);color:var(--cream)">Para dos</b><span><strong>¿Esta tarde, para dos?</strong> Te abrimos la reserva con 2 personas y hoy ya marcados. <button type="button" class="back" style="padding:0" data-pick-inline data-two data-k="lluria">Roger de Llúria</button> · <button type="button" class="back" style="padding:0" data-pick-inline data-two data-k="laietana">Via Laietana</button></span></div>
 <div class="rsv-inline" data-rsv-inline hidden></div>
 <p class="groups" style="padding:20px 0 60px">¿Sois 10 o más? Llámanos y lo organizamos: <a href="tel:+34934673224">Llúria 93 467 32 24</a> · <a href="tel:+34932703487">Laietana 93 270 34 87</a>.</p></div></main>
 <footer class="foot"><div class="wrap">
 <p class="lema">No somos Luigi, pero esto es Luigi. Cocina italiana y mediterránea de doce a doce.</p>
-<div class="cols"><div><h4>Roger de Llúria</h4><ul><li><a href="/muestras/luigi-web-2026/roger-de-lluria/">Roger de Llúria, 50, 08009 Barcelona</a></li><li><a href="tel:+34934673224">93 467 32 24</a></li><li>Metro Girona (L4)</li></ul></div><div><h4>Via Laietana</h4><ul><li><a href="/muestras/luigi-web-2026/via-laietana/">Via Laietana, 41, 08003 Barcelona</a></li><li><a href="tel:+34932703487">93 270 34 87</a></li><li>Metro Urquinaona (L1 · L4)</li></ul></div><div><h4>Horario</h4><ul><li>Todos los días, de 12:00 a 00:00</li><li>Cocina abierta sin cortes</li><li>Menú del día: lunes a viernes, 12:00–16:00</li><li>DJ: viernes y sábado</li></ul></div><div><h4>Síguenos</h4><ul><li><a href="https://www.instagram.com/luigiristorantebcn/" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@luigiristorantebcn" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/@show.deluigi" rel="noopener">Youtube</a></li><li><a href="https://www.facebook.com/luigiristorante" rel="noopener">Facebook</a></li></ul><h4 style="margin-top:22px">Más</h4><ul><li><a href="/muestras/luigi-web-2026/carta/">Carta</a></li><li><a href="https://luigiristorante.es/compra-on-line/categoria-producto/tarjetas-regalo/" rel="noopener">Tarjeta regalo</a></li><li><a href="https://luigiristorante.es/menus-grupo/" rel="noopener">Menús de grupo</a></li><li><a href="https://glovoapp.com/es/bcn/store/luigi-ristorante/" rel="noopener">A domicilio (Glovo)</a></li></ul></div></div>
+<div class="cols"><div><h4>Roger de Llúria</h4><ul><li><a href="/muestras/luigi-web-2026/roger-de-lluria/">Roger de Llúria, 50, 08009 Barcelona</a></li><li><a href="tel:+34934673224">93 467 32 24</a></li><li>Metro Girona (L4)</li></ul></div><div><h4>Via Laietana</h4><ul><li><a href="/muestras/luigi-web-2026/via-laietana/">Via Laietana, 41, 08003 Barcelona</a></li><li><a href="tel:+34932703487">93 270 34 87</a></li><li>Metro Urquinaona (L1 · L4)</li></ul></div><div><h4>Horario</h4><ul><li>Todos los días, de 12:00 a 00:00</li><li>Cocina abierta sin cortes</li><li>Menú del día: lunes a viernes, 12:00–16:00</li><li>DJ: viernes y sábado</li></ul></div><div><h4>Síguenos</h4><ul><li><a href="https://www.instagram.com/luigiristorantebcn/" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@luigiristorantebcn" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/@show.deluigi" rel="noopener">YouTube</a></li><li><a href="https://www.facebook.com/luigiristorante" rel="noopener">Facebook</a></li></ul><h4 style="margin-top:22px">Más</h4><ul><li><a href="/muestras/luigi-web-2026/carta/">Carta</a></li><li><a href="https://luigiristorante.es/compra-on-line/categoria-producto/tarjetas-regalo/" rel="noopener">Tarjeta regalo</a></li><li><a href="https://luigiristorante.es/menus-grupo/" rel="noopener">Menús de grupo</a></li><li><a href="https://glovoapp.com/es/bcn/store/luigi-ristorante/" rel="noopener">A domicilio (Glovo)</a></li></ul></div></div>
 <div class="legal"><span>© 2026 Luigi Ristorante</span><a href="https://luigiristorante.es/aviso-legal/" rel="noopener">Aviso legal</a><a href="https://luigiristorante.es/politica-de-privacidad/" rel="noopener">Privacidad</a><a href="https://luigiristorante.es/politica-de-cookies/" rel="noopener">Cookies</a><span>Versión de prueba · Veldra Consulting</span></div>
 </div></footer>
 <div class="dock"><a class="btn btn-gold" href="/muestras/luigi-web-2026/reservar/" data-rsv>Reservar mesa</a><a class="btn btn-line" href="/muestras/luigi-web-2026/para-llevar/">Para llevar</a></div>
 <dialog id="rsv" aria-labelledby="rsv-t"><div class="sheet">
 <div class="sheet-h"><div style="flex:1"><button type="button" class="back" hidden>← Cambiar de local</button><h2 id="rsv-t" data-rsv-title>Elige restaurante</h2></div><button type="button" class="x" aria-label="Cerrar">×</button></div>
-<div class="sheet-b"><div class="pick"><button type="button" data-k="lluria"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><span>Eixample · Metro Girona (L4)</span></span></button><button type="button" data-k="laietana"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><span>Barri Gòtic · Metro Urquinaona (L1 · L4)</span></span></button><p class="hint groups" style="padding:0">¿Sois 10 o más? Llámanos y lo organizamos: <a href="tel:+34934673224">Llúria 93 467 32 24</a> · <a href="tel:+34932703487">Laietana 93 270 34 87</a>.</p></div><div data-rsv-box hidden></div></div>
+<div class="sheet-b"><div class="pick"><button type="button" data-k="lluria"><img src="/muestras/luigi-web-2026/img/lluria-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Roger de Llúria</strong><small>Eixample · Metro Girona (L4)</small></span></button><button type="button" data-k="laietana"><img src="/muestras/luigi-web-2026/img/laietana-fachada.webp" width="184" height="140" alt="" loading="lazy" decoding="async"><span><strong>Via Laietana</strong><small>Barri Gòtic · Metro Urquinaona (L1 · L4)</small></span></button><p class="hint groups" style="padding:0">¿Sois 10 o más? Llámanos y lo organizamos: <a href="tel:+34934673224">Llúria 93 467 32 24</a> · <a href="tel:+34932703487">Laietana 93 270 34 87</a>.</p></div><div data-rsv-box hidden></div></div>
 </div></dialog>
 </body>
 </html>
