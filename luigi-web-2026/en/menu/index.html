@@ -115,7 +115,7 @@ button{font:inherit;color:inherit}
 .voices::-webkit-scrollbar{display:none}
 .voice{scroll-snap-align:start;background:var(--ink);color:var(--cream);border-radius:var(--r);padding:24px 22px 22px;display:flex;flex-direction:column;min-height:250px;position:relative;overflow:hidden}
 .voice .mono{color:var(--gold)}
-.voice h3{font-size:40px;margin:auto 0 4px}
+.voice h3{font-size:40px;margin:48px 0 4px}
 .voice .rol{font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute-d);margin-bottom:12px}
 .voice p{margin:0;color:#e2d8c3;font-size:15.5px}
 .voice::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;border:1px solid rgba(217,180,91,.25)}
@@ -194,7 +194,7 @@ button{font:inherit;color:inherit}
 .foot .legal a{color:#bdb39f}
 .lema{font-family:var(--serif);font-size:30px;line-height:1.08;color:var(--cream);max-width:20ch;margin:0 0 30px}
 /* page head */
-.ph1{padding:56px 0 30px}
+.ph1{padding-top:48px;padding-bottom:30px}
 .ph1 h1{font-size:clamp(44px,11vw,88px);margin-bottom:14px}
 .crumbs{font:400 11.5px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
 .crumbs a{text-decoration:none}
@@ -218,7 +218,8 @@ button{font:inherit;color:inherit}
 .item .pr small{display:block;color:var(--mute);font-size:11px}
 .item.hide{display:none}
 .filt{margin:22px 0 0;border:1px solid var(--line);border-radius:var(--r);background:#fff6}
-.filt summary{cursor:pointer;padding:14px 16px;font:400 12.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between}
+.filt summary{cursor:pointer;padding:14px 16px;font:400 12px var(--mono);letter-spacing:.05em;text-transform:uppercase;list-style:none;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
+.filt summary span:last-child{color:var(--mute)}
 .filt summary::-webkit-details-marker{display:none}
 .filt .opts{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px}
 .filt label{display:inline-flex;gap:8px;align-items:center;font-size:14.5px;border:1px solid var(--line);border-radius:999px;padding:8px 12px;cursor:pointer;background:var(--paper)}
@@ -230,6 +231,7 @@ button{font:inherit;color:inherit}
 .lhero .im img{width:100%;height:100%;object-fit:cover}
 .lhero .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,0) 45%,#14120e 100%)}
 .lhero .in{position:relative;padding:0 20px 34px;margin-top:-90px;max-width:var(--w);margin-left:auto;margin-right:auto}
+.lhero .crumbs{display:none}
 .lhero h1{font-size:clamp(44px,11vw,96px);margin-bottom:12px}
 .gal{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 10px;margin:26px -20px 0;scrollbar-width:none}
 .gal::-webkit-scrollbar{display:none}
@@ -243,7 +245,7 @@ button{font:inherit;color:inherit}
 dialog{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:transparent;color:var(--ink)}
 dialog::backdrop{background:rgba(10,9,7,.6)}
 .sheet{position:absolute;left:0;right:0;bottom:0;max-height:94%;height:94%;background:var(--paper);border-radius:20px 20px 0 0;display:flex;flex-direction:column;overflow:hidden;animation:up .28s ease}
-@keyframes up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@keyframes up{from{transform:translateY(40px)}to{transform:none}}
 .sheet-h{display:flex;align-items:center;gap:12px;padding:16px 16px 14px 20px;border-bottom:1px solid var(--line)}
 .sheet-h h2{font-size:26px;flex:1}
 .x{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff8;cursor:pointer;font-size:22px;line-height:1;flex:none}
@@ -369,6 +371,7 @@ textarea{min-height:76px;resize:vertical}
 .lhero{display:grid;grid-template-columns:1fr 1fr;align-items:end}
 .lhero .im{aspect-ratio:auto;height:100%;min-height:560px;order:2}
 .lhero .im::after{background:linear-gradient(90deg,#14120e 0%,rgba(20,18,14,0) 30%)}
+.lhero .crumbs{display:block}
 .lhero .in{margin:0;padding:80px 40px 60px max(20px,calc((100vw - var(--w))/2 + 20px))}
 .gal{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:30px 0 0;padding:0}
 .cartbar{left:auto;right:24px;bottom:24px;width:420px;border-radius:999px;padding:8px}
